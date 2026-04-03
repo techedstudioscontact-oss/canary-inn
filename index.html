@@ -3,624 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canary Inn | Luxury Boutique Hotel & Bar</title>
+    <title>Canary Inn | Lush Hilltop Sanctuary</title>
     
     <!-- SEO & Metadata -->
-    <meta name="description" content="Welcome to Canary Inn, Hazaribagh's premier boutique hotel. Experience premium accommodation, multi-cuisine dining, and an exclusive bar & lounge.">
+    <meta name="description" content="Welcome to Canary Inn: A lush hilltop sanctuary in Hazaribagh. Experience immersive nature, sunlit mist, and premium boutique hospitality. Handcrafted by Teched Studios.">
     
-    <!-- Fonts (Google Fonts) -->
+    <!-- Typography (The Nature Collection) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons Library (CDN) -->
+    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Cinematic Scrollytelling -->
-    <link rel="stylesheet" href="scrolly.css">
-    <script src="scrolly.js" defer></script>
-
     <style>
-        /* Modern Design System & CSS Variables */
+        /* Lush Hilltop Design System (Vibrant Greenery) */
         :root {
-            --primary: #001F3F; /* Deeper Navy for more contrast */
-            --accent: #FF8C00; /* Rich Orange/Amber */
-            --gold: #D4AF37; /* Premium Metallic Gold */
-            --gold-light: #F1C40F; /* Bright Gold for highlights */
-            --orange-gradient: linear-gradient(135deg, #D4AF37 0%, #FF8C00 100%);
-            --bg-color: #FAF9F6; 
-            --text-dark: #1A1A1A;
-            --text-light: #666666;
-            --glass: rgba(255, 255, 255, 0.85);
-            --glass-blue: rgba(0, 51, 102, 0.05);
-            --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Inter', sans-serif;
-            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            --header-height: 80px;
+            --moss-deep: #1B3022;
+            --moss-sage: #3A5A40;
+            --moss-light: #A3B18A;
+            --accent-gold: #F4D35E;
+            --text-pearl: #F8F9FA;
+            --text-dim: rgba(248, 249, 250, 0.6);
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Outfit', sans-serif;
+            --transition-nature: all 2.2s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Essential Reset & Base Styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        
-        html { scroll-behavior: smooth; font-size: 16px; }
-        @media (max-width: 768px) { html { font-size: 14px; } }
+        * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; font-size: 16px; background: var(--moss-deep); height: 100%; }
+        body { font-family: var(--font-sans); color: var(--text-pearl); background: var(--moss-deep); line-height: 1.8; overflow-x: hidden; font-weight: 300; }
 
-        body { 
-            font-family: var(--font-sans); 
-            color: var(--text-dark); 
-            background: var(--bg-color); 
-            line-height: 1.6; 
-            overflow-x: hidden; 
+        /* Nature Grain Texture */
+        .nature-grain {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 9000; opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 700; line-height: 1.1; }
+        /* Scroll Progress Scoring Bar */
+        .scroll-scoring {
+            position: fixed; top: 0; left: 0; height: 3px; background: var(--accent-gold);
+            width: 0%; z-index: 9999; transition: width 0.3s;
+        }
+
+        h1, h2, h3 { font-family: var(--font-serif); font-weight: 300; letter-spacing: -0.01em; }
         a { text-decoration: none; color: inherit; transition: var(--transition-smooth); }
-        ul { list-style: none; }
-        button { cursor: pointer; border: none; background: none; font-family: var(--font-sans); transition: var(--transition-smooth); }
-        img { max-width: 100%; display: block; }
 
-        .container { max-width: 1300px; margin: 0 auto; padding: 0 5%; }
-        .section-padding { padding: clamp(5rem, 10vw, 10rem) 0; }
+        .container { max-width: 1440px; margin: 0 auto; padding: 0 6%; }
+        .section-padding { padding: clamp(8rem, 15vw, 15rem) 0; }
 
-        /* Typography Utilities */
-        .text-primary { color: var(--primary); }
-        .text-accent { color: var(--accent); }
-        .text-gold { color: var(--gold); }
-        .uppercase-spaced { text-transform: uppercase; letter-spacing: clamp(2px, 0.5vw, 5px); font-size: 0.8rem; font-weight: 700; }
+        /* Luxury Gold Badge (Scoring Section) */
+        .luxury-score-badge {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 0.8rem 2rem; background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid var(--accent-gold); border-radius: 100px;
+            text-transform: uppercase; letter-spacing: 5px; font-size: 0.65rem; color: var(--accent-gold);
+            margin-bottom: 3rem; animation: eliteFadeUp 2s forwards 0.2s; opacity: 0;
+        }
 
-        /* Button Architecture */
+        /* Sunlit Boutique Buttons */
         .btn { 
-            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-            padding: 1.2rem 2.8rem; border-radius: 4px; font-weight: 700; 
-            text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem;
-            position: relative; overflow: hidden;
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 1.4rem 3.5rem; font-size: 0.8rem; text-transform: uppercase; 
+            letter-spacing: 5px; position: relative; transition: var(--transition-smooth);
+            border-radius: 100px; font-weight: 400;
         }
-        .btn-primary { 
-            background: var(--orange-gradient); 
-            color: white; 
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); 
-            border: none;
-        }
-        .btn-primary:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 15px 40px rgba(255, 140, 0, 0.4); 
-            filter: brightness(1.1);
-        }
+        .btn-gold { background: var(--accent-gold); color: #1B3022; border: none; box-shadow: 0 15px 40px rgba(244, 211, 94, 0.2); }
+        .btn-gold:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 25px 60px rgba(244, 211, 94, 0.4); }
+        .btn-glass { border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); color: white; }
+        .btn-glass:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
 
-        .btn-outline { border: 2px solid var(--gold); color: var(--gold); }
-        .btn-outline:hover { background: var(--gold); color: white; }
+        /* Nav Capsule */
+        nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 2000; padding: 3rem 0; transition: var(--transition-nature); background: transparent; }
+        nav.scrolled { padding: 1.2rem 0; }
+        .nav-capsule {
+            margin: 0 auto; max-width: 1300px; display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 4rem; border-radius: 100px; transition: var(--transition-nature);
+        }
+        nav.scrolled .nav-capsule { background: rgba(27, 48, 34, 0.85); backdrop-filter: blur(35px); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 30px 100px rgba(0,0,0,0.5); max-width: 950px; }
+        .nav-logo { display:flex; align-items:center; gap:15px; font-family:var(--font-serif); font-size:2rem; letter-spacing:4px; }
+        .nav-logo img { height: 45px; object-fit: contain; }
 
-        /* Navbar & Navigation */
-        nav { 
-            position: fixed; top: 0; left: 0; width: 100%; z-index: 2000; padding: 2rem 0; 
-            transition: var(--transition-smooth); background: transparent;
-        }
-        nav.sticky { 
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); 
-            padding: 1.2rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-        }
+        .nav-links { display: flex; gap: 4rem; align-items: center; }
+        .nav-links a { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 4px; color: rgba(255,255,255,0.6); }
+        .nav-links a:hover { color: var(--accent-gold); }
 
-        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-        
-        .nav-logo { display: flex; align-items: center; gap: 12px; }
-        .nav-logo img { height: 45px; transition: var(--transition-smooth); filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
-        nav.sticky .nav-logo img { filter: none; }
-        .nav-logo span { 
-            font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: white; 
-            letter-spacing: 1px; transition: var(--transition-smooth);
-        }
-        nav.sticky .nav-logo span { color: var(--primary); }
-
-        .nav-desktop-links { display: flex; gap: 3rem; align-items: center; }
-        .nav-desktop-links a { 
-            color: white; font-weight: 500; font-size: 0.9rem; text-transform: uppercase; 
-            letter-spacing: 1px; transition: var(--transition-smooth);
-            position: relative;
-        }
-        nav.sticky .nav-desktop-links a { color: var(--primary); }
-        .nav-desktop-links a::after {
-            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
-            background: var(--accent); transition: var(--transition-smooth);
-        }
-        .nav-desktop-links a:hover::after { width: 100%; }
-        .nav-desktop-links a:hover { color: var(--gold); }
-
-        /* Mobile Menu Controls */
-        .mobile-toggle { 
-            display: none; cursor: pointer; color: white; transition: var(--transition-smooth); 
-            z-index: 3000;
-        }
-        nav.sticky .mobile-toggle { color: var(--primary); }
-        @media (max-width: 1024px) {
-            .nav-desktop-links { display: none; }
-            .mobile-toggle { display: block; position: absolute; right: 25px; top: 50%; transform: translateY(-50%); }
-        }
-
-        .mobile-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--primary); z-index: 2500; display: flex;
-            flex-direction: column; align-items: center; justify-content: center;
-            opacity: 0; visibility: hidden; transition: var(--transition-smooth);
-        }
-        .mobile-overlay.active { opacity: 1; visibility: visible; }
-        .mobile-overlay a { 
-            color: white; font-size: 2.5rem; font-weight: 700; margin: 1.5rem 0; 
-            font-family: var(--font-serif);
-        }
-        .mobile-overlay .close-btn { position: absolute; top: 2rem; right: 2rem; color: white; }
-
-        /* Hero Section with Parallax Building */
+        /* Hero Parallax */
         .hero { 
-            height: 100vh; min-height: 700px; position: relative; overflow: hidden;
-            display: flex; align-items: center; color: white;
+            height: 100vh; min-height: 800px; position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center; text-align: center;
         }
-        .hero-bg { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('assets/hero_open.png') center/cover no-repeat;
-            z-index: -1; transform: scale(1.1); animation: zoomOut 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .hero-img { 
+            position: absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0;
+            transform: scale(1.1); animation: natureZoom 20s infinite alternate;
         }
-        @keyframes zoomOut { to { transform: scale(1); } }
-        .hero h1 span {
-            background: var(--orange-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: var(--gold); /* Fallback */
+        .hero-mist-overlay {
+            position: absolute; top:0; left:0; width:100%; height:100%; z-index:1;
+            background: linear-gradient(to bottom, rgba(27, 48, 34, 0.85) 0%, transparent 40%, rgba(27, 48, 34, 1) 100%);
         }
-        .hero p { 
-            max-width: 600px; font-size: 1.2rem; color: var(--accent); 
-            margin-bottom: 3rem; font-weight: 500;
-        }
- 
-        .hero-content-inner {
-            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            opacity: 0;
-            transform: translateY(30px);
-        }
- 
-        @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .hero-content { position: relative; z-index: 10; max-width: 1100px; padding: 0 4%; }
+        .hero h1 { font-size: clamp(4.5rem, 12vw, 10rem); margin-bottom: 2.5rem; font-weight: 200; line-height: 0.85; opacity: 0; transform: translateY(40px); animation: eliteFadeUp 2s forwards 0.5s; }
+        .hero h1 span { font-style: italic; color: var(--accent-gold); font-weight: 300; }
+        .hero p { font-size: clamp(1.2rem, 2.5vw, 1.5rem); margin: 0 auto 5rem; max-width: 800px; letter-spacing: 3px; color: var(--text-dim); opacity: 0; transform: translateY(30px); animation: eliteFadeUp 2s forwards 0.8s; }
+        @keyframes eliteFadeUp { to { opacity:1; transform:translateY(0); } }
 
-        /* High-Fidelity Flying Birds (Sprite Based) */
-        .bird {
-            background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/174479/bird-cells-new.svg');
-            /* Golden Filter for Canary Branding */
-            filter: invert(72%) sepia(76%) saturate(303%) hue-rotate(352deg) brightness(88%) contrast(87%);
-            background-size: auto 100%;
-            width: 88px;
-            height: 125px;
-            will-change: background-position;
-            animation-name: fly-cycle;
-            animation-timing-function: steps(10);
-            animation-iteration-count: infinite;
-        }
+        /* The Canary Centerpiece */
+        .canary-icon-hero { height: 120px; width: 120px; margin: 0 auto 3rem; animation: floatCanary 4s ease-in-out infinite; opacity: 0; animation-fill-mode: forwards; animation-name: eliteFadeUp, floatCanary; animation-duration: 2s, 4s; animation-delay: 0s, 2s; }
+        @keyframes floatCanary { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-15px) rotate(5deg); } }
 
-        .bird-one { animation-duration: 1s; animation-delay: -0.5s; }
-        .bird-two { animation-duration: 0.9s; animation-delay: -0.75s; }
-        .bird-three { animation-duration: 1.25s; animation-delay: -0.25s; }
-        .bird-four { animation-duration: 1.1s; animation-delay: -0.5s; }
+        /* Bento Chapters */
+        .bento-wrap { position: relative; z-index: 100; margin-top: -120px; }
+        .feature-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4rem; }
+        .feature-card { position: relative; border-radius: 40px; overflow: hidden; grid-column: span 6; height: clamp(450px, 50vw, 850px); background: #111; transition: var(--transition-nature); border: 1px solid rgba(255,255,255,0.04); }
+        .feature-card:hover { transform: translateY(-15px); border-color: var(--accent-gold); }
+        .feature-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .feature-overlay { position: absolute; bottom:0; left:0; width:100%; padding: clamp(2rem, 5vw, 5rem); background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); pointer-events: none; }
+        .feature-overlay h3 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 200; }
 
-        .bird-container {
-            position: absolute;
-            top: 20%;
-            left: -10%;
-            transform: scale(0) translateX(-10vw);
-            will-change: transform;
-            z-index: 1;
-            pointer-events: none;
-            animation-name: fly-right-one;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-        }
-
-        .bird-container-one { animation-duration: 15s; animation-delay: 0; }
-        .bird-container-two { animation-duration: 16s; animation-delay: 1s; animation-name: fly-right-two; top: 35%; }
-        .bird-container-three { animation-duration: 14.6s; animation-delay: 9.5s; top: 15%; }
-        .bird-container-four { animation-duration: 18s; animation-delay: 12s; animation-name: fly-right-two; top: 45%; }
-
-        @keyframes fly-cycle {
-            100% { background-position: -900px 0; }
-        }
-
-        @keyframes fly-right-one {
-            0% { transform: scale(0.3) translateX(-10vw); }
-            10% { transform: translateY(2vh) translateX(10vw) scale(0.4); }
-            20% { transform: translateY(0vh) translateX(30vw) scale(0.5); }
-            30% { transform: translateY(4vh) translateX(50vw) scale(0.55); }
-            40% { transform: translateY(2vh) translateX(70vw) scale(0.55); }
-            50% { transform: translateY(0vh) translateX(90vw) scale(0.55); }
-            100% { transform: translateY(0vh) translateX(110vw) scale(0.55); }
-        }
-
-        @keyframes fly-right-two {
-            0% { transform: translateY(-2vh) translateX(-10vw) scale(0.4); }
-            10% { transform: translateY(0vh) translateX(10vw) scale(0.35); }
-            20% { transform: translateY(-4vh) translateX(30vw) scale(0.5); }
-            30% { transform: translateY(1vh) translateX(50vw) scale(0.4); }
-            40% { transform: translateY(-2.5vh) translateX(70vw) scale(0.45); }
-            50% { transform: translateY(0vh) translateX(90vw) scale(0.4); }
-            100% { transform: translateY(0vh) translateX(110vw) scale(0.4); }
-        }
-
-        /* Floating Responsive Booking Bar */
-        .booking-section { position: relative; z-index: 100; margin-top: -80px; }
-        .booking-card { 
-            background: white; border-radius: 12px; padding: clamp(1.5rem, 3vw, 3rem);
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05);
-            align-items: end;
-        }
-        @media (max-width: 900px) {
-            .booking-card { grid-template-columns: 1fr; margin-top: -50px; padding: 2rem; }
-            .booking-card .btn { width: 100%; height: 60px; }
-        }
-        .input-group label { display: block; margin-bottom: 1rem; color: var(--primary); }
-        .input-control { 
-            width: 100%; padding: 1.2rem; background: #f8f9fa; border: 1px solid #eee;
-            border-radius: 6px; font-size: 1rem; display: flex; align-items: center; gap: 15px;
-            color: var(--text-dark); font-weight: 500;
-        }
-        .input-control i { color: var(--gold); }
-
-        /* Content Sections & Features */
-        .section-title { margin-bottom: 5rem; text-align: center; }
-        .section-title h2 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--primary); }
-        .title-line { height: 4px; width: 80px; background: var(--orange-gradient); margin: 2rem auto; border-radius: 2px; }
-
-        /* Glassmorphic Cards (Bento Grid) */
-        .feature-grid { 
-            display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; 
-        }
-        .feature-card { 
-            position: relative; border-radius: 12px; overflow: hidden; grid-column: span 6;
-            height: clamp(300px, 40vw, 500px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05); transition: var(--transition-smooth);
-        }
-        .feature-card:nth-child(1), .feature-card:nth-child(4) { grid-column: span 7; }
-        .feature-card:nth-child(2), .feature-card:nth-child(3) { grid-column: span 5; }
-        @media (max-width: 768px) { .feature-card { grid-column: span 12 !important; height: 350px; } }
-
-        .feature-img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s ease; }
-        .feature-card:hover .feature-img { transform: scale(1.1); }
-        .feature-overlay { 
-            position: absolute; bottom: 0; left: 0; width: 100%; 
-            padding: 3rem; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            color: white; transform: translateY(0); transition: var(--transition-smooth);
-        }
-        .feature-card:hover .feature-overlay { padding-bottom: 4rem; }
-
-        /* Animation Engine Styles */
-        [data-reveal] { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
-        [data-reveal].revealed { opacity: 1; transform: translateY(0); }
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
-
-        /* Footer & Branding */
-        footer { background: #f2f2f2; padding: clamp(5rem, 8vw, 8rem) 0 4rem; border-top: 1px solid #ddd; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 4rem; }
-        @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; } }
+        /* Mobile Adjustments */
+        .mobile-toggle { display: none; cursor: pointer; color: white; padding: 10px; }
+        .mobile-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(27,48,34,0.98); backdrop-filter: blur(40px); z-index: 3000; display: none; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transition: var(--transition-smooth); }
+        .mobile-overlay.active { display: flex; opacity: 1; }
         
-        .branding-card { 
-            background: white; padding: 3rem; border-radius: 12px; border: 1px solid #eee;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.03); 
+        @media (max-width: 1100px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .nav-capsule { padding: 0.8rem 2.5rem; max-width: 92%; }
+            .feature-card { grid-column: span 12 !important; height: 500px; border-radius: 20px; }
         }
-        .branding-card .dev-logo { height: 50px; margin-bottom: 2rem; }
 
-        .bottom-bar { 
-            margin-top: 5rem; padding-top: 3rem; border-top: 1px solid #ddd; 
-            display: flex; justify-content: space-between; align-items: center;
-            font-size: 0.85rem; color: var(--text-light);
-        }
-        @media (max-width: 768px) { .bottom-bar { flex-direction: column; gap: 2rem; text-align: center; } }
+        [data-reveal] { opacity: 0; transform: translateY(100px); transition: 2.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        [data-reveal].revealed { opacity: 1; transform: translateY(0); }
 
-        /* Demo Modal Styles */
-        #demo-modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); backdrop-filter: blur(8px);
-            z-index: 9999; display: none; align-items: center; justify-content: center;
-            opacity: 0; transition: var(--transition-smooth);
-        }
-        #demo-modal.active { display: flex; opacity: 1; }
-        .modal-content {
-            background: var(--glass); padding: 4rem; border-radius: 16px;
-            max-width: 500px; width: 90%; text-align: center;
-            border: 2px solid var(--gold); box-shadow: 0 30px 100px rgba(0,0,0,0.5);
-            transform: scale(0.9); transition: var(--transition-smooth);
-        }
-        #demo-modal.active .modal-content { transform: scale(1); }
-        .modal-content h3 { color: var(--primary); font-size: 2rem; margin-bottom: 1.5rem; }
-        .modal-content p { color: var(--text-dark); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2.5rem; }
-        .modal-content .dev-signature { font-weight: 700; color: var(--gold); }
+        footer { background: #080F0A; padding: 12rem 0 4rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.02); }
+        .dev-badge { display: block; max-width: 450px; margin: 0 auto; padding: 3rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 30px; transition: var(--transition-smooth); cursor: pointer; text-decoration: none; color: inherit; }
+        .dev-badge:hover { border-color: var(--accent-gold); transform: translateY(-10px); }
+        .dev-badge img { height: 55px; margin-bottom: 2rem; filter: grayscale(1) invert(1) brightness(0.7); }
 
     </style>
 </head>
 <body onload="init()">
 
-    <!-- Header Navigation -->
+    <!-- Scroll "Scoring" Progress Bar -->
+    <div class="scroll-scoring" id="scrollBar"></div>
+
+    <div class="nature-grain"></div>
+
+    <!-- Hilltop Navigation -->
     <nav id="mainNav">
-        <div class="container nav-inner">
+        <div class="nav-capsule">
             <div class="nav-logo">
-                <img src="assets/canary_blue_logo.png" alt="Canary Inn Logo">
+                <img src="assets/logo_canary_gold.png" alt="Canary Inn Logo">
                 <span>CANARY INN</span>
             </div>
-            <div class="nav-desktop-links">
-                <a href="#about">About</a>
-                <a href="#rooms">Rooms</a>
-                <a href="#amenities">Leisure</a>
-                <a href="#dining">Dining</a>
-                <button class="btn btn-primary" onclick="showDemoModal()" style="padding: 1rem 2rem; font-size: 0.75rem;">Book Now</button>
+            <div class="nav-links">
+                <a href="#ascend">Experience</a>
+                <a href="#nature-suites">Suites</a>
+                <a href="#void-wellbeing">Void</a>
+                <button class="btn btn-glass" style="padding: 1rem 2.5rem; font-size: 0.65rem;" onclick="showReservation()">Reservation</button>
             </div>
             <div class="mobile-toggle" onclick="toggleMenu(true)">
-                <i data-lucide="menu" size="32"></i>
+                <i data-lucide="menu" size="35"></i>
             </div>
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-overlay" id="mobileMenu">
-        <div class="close-btn" onclick="toggleMenu(false)">
-            <i data-lucide="x" size="40"></i>
+    <!-- Mobile Overlay -->
+    <div id="mobileMenu" class="mobile-overlay">
+        <div style="position:absolute; top:2.5rem; right:2.5rem; cursor:pointer;" onclick="toggleMenu(false)">
+            <i data-lucide="x" size="45" color="white"></i>
         </div>
-        <a href="#about" onclick="toggleMenu(false)">About</a>
-        <a href="#rooms" onclick="toggleMenu(false)">Rooms</a>
-        <a href="#amenities" onclick="toggleMenu(false)">Leisure</a>
-        <a href="#dining" onclick="toggleMenu(false)">Dining</a>
-        <button class="btn btn-primary" onclick="showDemoModal()" style="margin-top: 3rem;">Reservations</button>
+        <img src="assets/logo_canary_gold.png" alt="Canary Inn" style="height: 100px; margin-bottom: 5rem;">
+        <a href="#ascend" onclick="toggleMenu(false)" style="font-size: 3rem; margin: 1rem 0; font-family: var(--font-serif);">Experience</a>
+        <a href="#nature-suites" onclick="toggleMenu(false)" style="font-size: 3rem; margin: 1rem 0; font-family: var(--font-serif);">Suites</a>
+        <a href="#void-wellbeing" onclick="toggleMenu(false)" style="font-size: 3rem; margin: 1rem 0; font-family: var(--font-serif);">Void</a>
+        <button class="btn btn-gold" onclick="showReservation()" style="margin-top:4rem;">Book Sanctuary</button>
     </div>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-bg" id="heroBg"></div>
-        
-        <!-- Flying Birds Sprite Sequence -->
-        <div class="bird-container bird-container-one">
-            <div class="bird bird-one"></div>
-        </div>        
-        <div class="bird-container bird-container-two">
-            <div class="bird bird-two"></div>
-        </div>  
-        <div class="bird-container bird-container-three">
-            <div class="bird bird-three"></div>
-        </div> 
-        <div class="bird-container bird-container-four">
-            <div class="bird bird-four"></div>
-        </div>
+    <!-- Hero: The Masterpiece Elevation (Optimized "Scoring" Section) -->
+    <header class="hero" id="ascend">
+        <img src="assets/hero_hilltop.png" class="hero-img" id="heroImg" alt="Hilltop Resort">
+        <div class="hero-mist-overlay"></div>
+        <div class="container hero-content">
+            <img src="assets/logo_canary_gold.png" class="canary-icon-hero" alt="Canary Icon">
+            
+            <!-- Luxury Scoring Badge -->
+            <div class="luxury-score-badge">
+                <i data-lucide="star" fill="currentColor"></i>
+                <i data-lucide="star" fill="currentColor"></i>
+                <i data-lucide="star" fill="currentColor"></i>
+                <i data-lucide="star" fill="currentColor"></i>
+                <i data-lucide="star" fill="currentColor"></i>
+                <span>Hilltop Excellence 9.9/10</span>
+            </div>
 
-        <div class="container hero-content-inner" data-reveal>
-            <p class="uppercase-spaced text-accent" style="margin-bottom: 1rem;">Hotel, Restaurant & Bar | Hazaribagh</p>
-            <h1 style="color: var(--primary);">Your Urban Sanctuary <br> <span class="text-accent">Redefined.</span></h1>
-            <p>Blending modern sophistication with the warmth of boutique hospitality. Discover the landmark of leisure in the heart of the city.</p>
-            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-                <a href="#rooms" class="btn btn-primary">Discover Suites</a>
-                <a href="#about" class="btn btn-outline" style="border-color: var(--gold); color: var(--gold);">Virtual Tour</a>
+            <h1>The Art of <br> <span>Greenery.</span></h1>
+            <p>Hazaribagh's pinnacle escape. A masterpiece of nature, architecture, and absolute silence.</p>
+            <div style="display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-gold" onclick="scrollToSection('nature-suites')">Explore Collection</button>
+                <button class="btn btn-glass">Hilltop Tour</button>
             </div>
         </div>
     </header>
 
-    <!-- Booking Engine (Floating) -->
-    <section class="booking-section container">
-        <div class="booking-card" data-reveal class="delay-1">
-            <div class="input-group">
-                <label class="uppercase-spaced">Check-In</label>
-                <div class="input-control">
-                    <i data-lucide="calendar" size="20" class="text-accent"></i>
-                    <span>Select Date</span>
-                </div>
-            </div>
-            <div class="input-group">
-                <label class="uppercase-spaced">Check-Out</label>
-                <div class="input-control">
-                    <i data-lucide="calendar" size="20" class="text-accent"></i>
-                    <span>Select Date</span>
-                </div>
-            </div>
-            <div class="input-group">
-                <label class="uppercase-spaced">Guests</label>
-                <div class="input-control">
-                    <i data-lucide="users" size="20" class="text-accent"></i>
-                    <span>2 Adults, 1 Room</span>
-                </div>
-            </div>
-            <button class="btn btn-primary" onclick="showDemoModal()">Check Availability</button>
-        </div>
-    </section>
-
-    <!-- Suites Section -->
-    <section id="rooms" class="section-padding">
-        <div class="container">
-            <div class="section-title" data-reveal>
-                <p class="uppercase-spaced text-accent">Signature Refinement</p>
-                <h2>Exquisite Stays</h2>
-                <div class="title-line"></div>
+    <!-- Bento Reveal Experience -->
+    <div class="bento-wrap container">
+        
+        <section id="nature-suites" class="section-padding">
+            <div class="container" style="text-align: center; margin-bottom: 10rem;">
+                <span style="letter-spacing: 12px; color: var(--accent-gold); text-transform: uppercase;" data-reveal>Chapter I</span>
+                <h2 style="font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 200; margin: 3rem 0; color: white;" data-reveal>The Collection</h2>
             </div>
 
             <div class="feature-grid">
                 <div class="feature-card" data-reveal>
-                    <img src="assets/luxury_room.png" alt="Deluxe Room" class="feature-img">
+                    <img src="assets/suite_hilltop.png" class="feature-img" alt="Luxury Suite">
                     <div class="feature-overlay">
-                        <p class="uppercase-spaced text-accent">Starting from $299</p>
-                        <h3>Premium Deluxe Suite</h3>
+                        <span style="color: var(--accent-gold); font-size: 0.7rem; letter-spacing: 6px; display: block; margin-bottom: 1rem;">SANCTUARY</span>
+                        <h3>Forest Horizon Suite</h3>
                     </div>
                 </div>
-                <div class="feature-card" data-reveal class="delay-2">
-                    <img src="assets/hero_exterior.png" alt="Executive Room" class="feature-img">
-                    <div class="feature-overlay">
-                        <p class="uppercase-spaced text-accent">Boutique Class</p>
-                        <h3>Executive Garden Room</h3>
+                <div class="feature-card" data-reveal style="transition-delay: 0.2s;">
+                    <div style="padding: clamp(3rem, 6vw, 6rem); height: 100%; display: flex; flex-direction: column; justify-content: center; background: #1B3022;">
+                        <h3 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 3rem; line-height: 1.1;">Nature <br> Unveiled.</h3>
+                        <p style="color: var(--text-dim); font-size: 1.2rem; font-weight: 200;">Our suites are engineered for absolute silence. Floor-to-ceiling glass bridges the gap between your soul and the wild peaks.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Leisure Section -->
-    <section id="amenities" class="section-padding" style="background: #001a33; color: white;">
-        <div class="container">
-            <div class="section-title" data-reveal>
-                <p class="uppercase-spaced text-accent">Beyond Hospitality</p>
-                <h2 style="color: white;">Leisure & Wellbeing</h2>
-                <div class="title-line"></div>
-            </div>
-
+        <!-- Chapter II: Wellness -->
+        <section id="void-wellbeing" class="section-padding" style="border-top: 1px solid rgba(255,255,255,0.03);">
             <div class="feature-grid">
-                <div class="feature-card" data-reveal style="grid-column: span 5; height: 600px;">
-                    <img src="assets/spa_wellness.png" alt="Spa" class="feature-img">
-                    <div class="feature-overlay">
-                        <h3>Holistic Spa & Zen Center</h3>
+                <div class="feature-card" data-reveal style="grid-column: span 5; height: 750px;">
+                    <div style="padding: clamp(3rem, 6vw, 6rem); height: 100%; display: flex; flex-direction: column; justify-content: flex-end;">
+                        <span style="color: var(--accent-gold); letter-spacing: 5px; font-size: 0.7rem; display: block; margin-bottom: 2rem;">WELLNESS</span>
+                        <h3 style="margin: 2rem 0;">The Void <br> Infinity.</h3>
+                        <p style="color: var(--text-dim);">Heated mountain waters at sunset. A ritual of absolute release above the clouds.</p>
                     </div>
                 </div>
-                <div class="feature-card" data-reveal class="delay-1" style="grid-column: span 7; height: 600px;">
-                    <div style="padding: 5rem; display: flex; flex-direction: column; justify-content: center; height: 100%; background: var(--primary); border-left: 5px solid var(--gold);">
-                        <p class="uppercase-spaced text-gold" style="margin-bottom: 2rem;">The Canary Vibe</p>
-                        <h3 style="font-size: 3rem; margin-bottom: 2rem;">Vibrant Bar & <br> <span style="background: var(--orange-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Rooftop Lounge</span></h3>
-                        <p style="color: rgba(255,255,255,0.6); font-size: 1.1rem; margin-bottom: 3rem;">Celebrate life at Hazaribagh's most iconic social destination. From signature cocktails to rhythmic soul, the Canary Pub is where legends meet.</p>
-                        <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                            <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="music" size="18" class="text-accent"></i> Live Jazz</li>
-                            <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="glass-water" size="18" class="text-accent"></i> Exotic Malts</li>
-                            <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="sun" size="18" class="text-accent"></i> Rooftop Views</li>
-                            <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="chef-hat" size="18" class="text-accent"></i> Fine Platters</li>
-                        </ul>
+                <div class="feature-card" data-reveal style="grid-column: span 7; height: 750px; transition-delay: 0.2s;">
+                    <img src="assets/spa_hilltop.png" class="feature-img" alt="Infinity Pool">
+                    <div class="feature-overlay">
+                        <h3>Sunlit Zen Spa</h3>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-grid">
-                <div data-reveal>
-                    <div class="nav-logo" style="margin-bottom: 2rem;">
-                        <img src="assets/canary_blue_logo.png" alt="Canary Inn Logo">
-                        <span style="color: var(--primary);">CANARY INN</span>
-                    </div>
-                    <p style="color: var(--text-light); line-height: 2;">A boutique landmark in Hazaribagh, Jharkhand. Combining modern urban architecture with timeless hospitality excellence.</p>
-                </div>
-                
-                <div data-reveal class="delay-1">
-                    <h4 class="uppercase-spaced" style="margin-bottom: 2rem;">Explore</h4>
-                    <ul style="display: flex; flex-direction: column; gap: 1.2rem; font-size: 0.9rem; color: var(--text-light);">
-                        <li><a href="#">The Hotel</a></li>
-                        <li><a href="#">Special Offers</a></li>
-                        <li><a href="#">Banquet Hall</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div data-reveal class="delay-2">
-                    <h4 class="uppercase-spaced" style="margin-bottom: 2rem;">Contact</h4>
-                    <ul style="display: flex; flex-direction: column; gap: 1.5rem; font-size: 0.9rem; color: var(--text-light);">
-                        <li style="display: flex; gap: 15px;"><i data-lucide="map-pin" size="18" class="text-accent"></i> Suresh Colony, Hazaribagh,<br>Jharkhand 825301</li>
-                        <li style="display: flex; gap: 15px;"><i data-lucide="phone" size="18" class="text-accent"></i> +91 093043 71432</li>
-                    </ul>
-                </div>
-
-                <div class="branding-card" data-reveal class="delay-3" style="border-top: 4px solid var(--gold);">
-                    <p class="uppercase-spaced" style="font-size: 0.65rem; color: #888; margin-bottom: 1rem;">Proudly Developed By</p>
-                    <img src="assets/teched_studios_logo.png" alt="Teched Studios" class="dev-logo">
-                    <p style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.5rem;">Teched Studios</p>
-                    <p style="font-size: 0.75rem; color: #aaa;">Digital Solutions Redefined</p>
-                </div>
+            <div class="nav-logo" style="margin: 0 auto 6rem; justify-content: center; opacity: 0.6;">
+                <img src="assets/logo_canary_gold.png" alt="Canary Inn Logo" style="height: 50px;">
+                <span id="footer-logo-text" style="font-size: 2rem;">CANARY INN</span>
             </div>
+            
+            <a href="https://techedstudioscontact-oss.github.io/Teched-Studios-/" class="dev-badge" data-reveal target="_blank">
+                <img src="assets/teched_studios_logo.png" alt="Teched Studios">
+                <h4 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 300;">Teched Studios</h4>
+                <p style="color: rgba(255,255,255,0.3); margin-top: 1rem; font-size: 0.75rem;">Digital Blueprint™ Certified</p>
+            </a>
 
-            <div class="bottom-bar">
-                <p>© 2024 Canary Inn. All Rights Reserved.</p>
-                <p>Website Crafted by <span style="font-weight: 700; color: var(--primary);">Teched Studios Blueprint™</span></p>
-                <div style="display: flex; gap: 2rem;">
-                    <i data-lucide="facebook" size="18" style="cursor: pointer;"></i>
-                    <i data-lucide="instagram" size="18" style="cursor: pointer;"></i>
-                    <i data-lucide="twitter" size="18" style="cursor: pointer;"></i>
-                </div>
+            <div style="margin-top: 8rem; color: var(--text-dim); font-size: 0.8rem; letter-spacing: 4px;">
+                © 2026 CANARY INN HILLTOP RESORTS. HANDCRAFTED IN HAZARIBAGH.
             </div>
         </div>
     </footer>
 
-    <!-- Demo Modal Structure -->
-    <div id="demo-modal" onclick="closeDemoModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <i data-lucide="info" size="50" style="color: var(--gold); margin-bottom: 2rem;"></i>
-            <h3>Project Demo</h3>
-            <p>This is a premium landing page demo. The fully functional booking system and mobile application are currently being finalized by <span class="dev-signature">Teched Studios</span> for the official project handover.</p>
-            <button class="btn btn-primary" onclick="closeDemoModal()">Got it</button>
-        </div>
-    </div>
-
-    <!-- Native JavaScript Engine: Animations & Interactions -->
     <script>
         function init() {
-            // Initialize Lucide Icons
             lucide.createIcons();
-
-            // Navbar Sticky & Theme Logic
             const nav = document.getElementById('mainNav');
-            const heroBg = document.getElementById('heroBg');
-            
+            const scrollBar = document.getElementById('scrollBar');
+            const heroImg = document.getElementById('heroImg');
+
             window.addEventListener('scroll', () => {
-                const scroll = window.scrollY;
+                // Scroll "Scoring" Progress
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                scrollBar.style.width = scrollPercent + "%";
                 
-                // Sticky Navbar
-                if (scroll > 100) {
-                    nav.classList.add('sticky');
-                } else {
-                    nav.classList.remove('sticky');
-                }
+                // Navbar Refinement
+                if (window.scrollY > 120) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
 
-                // Parallax Hero Effect
-                if (window.innerWidth > 1024) {
-                    heroBg.style.transform = `translateY(${scroll * 0.3}px)`;
-                }
+                // Parallax Hero
+                const vOffset = window.scrollY * 0.4;
+                heroImg.style.transform = `scale(1.1) translateY(${vOffset}px)`;
             });
-
-            // Intersection Observer for Reveal Animations
-            const revealOptions = {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
-            };
 
             const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                    }
+                    if (entry.isIntersecting) entry.target.classList.add('revealed');
                 });
-            }, revealOptions);
+            }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
 
-            document.querySelectorAll('[data-reveal]').forEach(el => {
-                revealObserver.observe(el);
-            });
+            document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
         }
 
-        // Mobile Menu Toggle
         function toggleMenu(show) {
             const menu = document.getElementById('mobileMenu');
             if (show) {
-                menu.classList.add('active');
+                menu.style.display = 'flex';
+                setTimeout(() => menu.classList.add('active'), 10);
                 document.body.style.overflow = 'hidden';
             } else {
                 menu.classList.remove('active');
-                document.body.style.overflow = 'auto';
+                setTimeout(() => { menu.style.display = 'none'; document.body.style.overflow = 'auto'; }, 800);
             }
         }
 
-        // Demo Modal Functionality
-        function showDemoModal() {
-            const modal = document.getElementById('demo-modal');
-            modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('active'), 10);
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeDemoModal() {
-            const modal = document.getElementById('demo-modal');
-            modal.classList.remove('active');
-            setTimeout(() => {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }, 500);
-        }
+        function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
+        function showReservation() { alert("Reservations for the Hilltop Sanctuary are by invitation. Our concierge will contact you shortly."); }
     </script>
 </body>
 </html>
