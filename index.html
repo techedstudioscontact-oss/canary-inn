@@ -126,11 +126,14 @@
         .nav-desktop-links a:hover { color: var(--gold); }
 
         /* Mobile Menu Controls */
-        .mobile-toggle { display: none; cursor: pointer; color: white; transition: var(--transition-smooth); }
+        .mobile-toggle { 
+            display: none; cursor: pointer; color: white; transition: var(--transition-smooth); 
+            z-index: 3000;
+        }
         nav.sticky .mobile-toggle { color: var(--primary); }
         @media (max-width: 1024px) {
             .nav-desktop-links { display: none; }
-            .mobile-toggle { display: block; }
+            .mobile-toggle { display: block; position: absolute; right: 25px; top: 50%; transform: translateY(-50%); }
         }
 
         .mobile-overlay {
@@ -152,10 +155,11 @@
             display: flex; align-items: center; color: white;
         }
         .hero-bg { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 120%; 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('assets/hero_open.png') center/cover no-repeat;
-            z-index: -1; transform: translateY(0);
+            z-index: -1; transform: scale(1.1); animation: zoomOut 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
+        @keyframes zoomOut { to { transform: scale(1); } }
         .hero h1 span {
             background: var(--orange-gradient);
             -webkit-background-clip: text;
@@ -166,6 +170,16 @@
         .hero p { 
             max-width: 600px; font-size: 1.2rem; color: var(--accent); 
             margin-bottom: 3rem; font-weight: 500;
+        }
+ 
+        .hero-content-inner {
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+ 
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* High-Fidelity Flying Birds (Sprite Based) */
@@ -324,39 +338,8 @@
 </head>
 <body onload="init()">
 
-    <!-- Cinematic Scrollytelling Intro Section -->
-    <section id="scrolly-intro">
-        <div class="scrolly-viewport">
-            <canvas id="scrolly-canvas"></canvas>
-            
-            <div class="narrative-overlay">
-                <div class="narrative-beat" id="beat1">
-                    <p>The Legend Returns</p>
-                    <h2>Canary Inn Hazaribagh</h2>
-                </div>
-                <div class="narrative-beat" id="beat2">
-                    <p>Architecture</p>
-                    <h2>Modern Urban Luxury</h2>
-                </div>
-                <div class="narrative-beat" id="beat3">
-                    <p>Leisure</p>
-                    <h2>A Sanctuary of Serenity</h2>
-                </div>
-                <div class="narrative-beat" id="beat4">
-                    <p>Heritage</p>
-                    <h2>Your Legacy Awaits</h2>
-                </div>
-            </div>
-            
-            <!-- Transition Bridge -->
-            <div class="scrolly-bridge"></div>
-        </div>
-    </section>
-
-    <!-- Main Site Content (Hidden during intro) -->
-    <div class="site-content">
-        <!-- Header Navigation -->
-        <nav id="mainNav" class="intro-active">
+    <!-- Header Navigation -->
+    <nav id="mainNav">
         <div class="container nav-inner">
             <div class="nav-logo">
                 <img src="assets/canary_blue_logo.png" alt="Canary Inn Logo">
@@ -405,7 +388,7 @@
             <div class="bird bird-four"></div>
         </div>
 
-        <div class="container" data-reveal>
+        <div class="container hero-content-inner" data-reveal>
             <p class="uppercase-spaced text-accent" style="margin-bottom: 1rem;">Hotel, Restaurant & Bar | Hazaribagh</p>
             <h1 style="color: var(--primary);">Your Urban Sanctuary <br> <span class="text-accent">Redefined.</span></h1>
             <p>Blending modern sophistication with the warmth of boutique hospitality. Discover the landmark of leisure in the heart of the city.</p>
@@ -554,7 +537,6 @@
             </div>
         </div>
     </footer>
-    </div> <!-- Close .site-content -->
 
     <!-- Demo Modal Structure -->
     <div id="demo-modal" onclick="closeDemoModal()">
