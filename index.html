@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canary Inn | Luxury Boutique Hotel & Bar</title>
+    
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Welcome to Canary Inn, Hazaribagh's premier boutique hotel. Experience premium accommodation, multi-cuisine dining, and an exclusive bar & lounge.">
+    
+    <!-- Fonts (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons Library (CDN) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Cinematic Scrollytelling -->
+    <link rel="stylesheet" href="scrolly.css">
+    <script src="scrolly.js" defer></script>
+
+    <style>
+        /* Modern Design System & CSS Variables */
+        :root {
+            --primary: #001F3F; /* Deeper Navy for more contrast */
+            --accent: #FF8C00; /* Rich Orange/Amber */
+            --gold: #D4AF37; /* Premium Metallic Gold */
+            --gold-light: #F1C40F; /* Bright Gold for highlights */
+            --orange-gradient: linear-gradient(135deg, #D4AF37 0%, #FF8C00 100%);
+            --bg-color: #FAF9F6; 
+            --text-dark: #1A1A1A;
+            --text-light: #666666;
+            --glass: rgba(255, 255, 255, 0.85);
+            --glass-blue: rgba(0, 51, 102, 0.05);
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --header-height: 80px;
+        }
+
+        /* Essential Reset & Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        html { scroll-behavior: smooth; font-size: 16px; }
+        @media (max-width: 768px) { html { font-size: 14px; } }
+
+        body { 
+            font-family: var(--font-sans); 
+            color: var(--text-dark); 
+            background: var(--bg-color); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
+
+        h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 700; line-height: 1.1; }
+        a { text-decoration: none; color: inherit; transition: var(--transition-smooth); }
+        ul { list-style: none; }
+        button { cursor: pointer; border: none; background: none; font-family: var(--font-sans); transition: var(--transition-smooth); }
+        img { max-width: 100%; display: block; }
+
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 5%; }
+        .section-padding { padding: clamp(5rem, 10vw, 10rem) 0; }
+
+        /* Typography Utilities */
+        .text-primary { color: var(--primary); }
+        .text-accent { color: var(--accent); }
+        .text-gold { color: var(--gold); }
+        .uppercase-spaced { text-transform: uppercase; letter-spacing: clamp(2px, 0.5vw, 5px); font-size: 0.8rem; font-weight: 700; }
+
+        /* Button Architecture */
+        .btn { 
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 1.2rem 2.8rem; border-radius: 4px; font-weight: 700; 
+            text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem;
+            position: relative; overflow: hidden;
+        }
+        .btn-primary { 
+            background: var(--orange-gradient); 
+            color: white; 
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); 
+            border: none;
+        }
+        .btn-primary:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 40px rgba(255, 140, 0, 0.4); 
+            filter: brightness(1.1);
+        }
+
+        .btn-outline { border: 2px solid var(--gold); color: var(--gold); }
+        .btn-outline:hover { background: var(--gold); color: white; }
+
+        /* Navbar & Navigation */
+        nav { 
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 2000; padding: 2rem 0; 
+            transition: var(--transition-smooth); background: transparent;
+        }
+        nav.sticky { 
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); 
+            padding: 1.2rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+        }
+
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        
+        .nav-logo { display: flex; align-items: center; gap: 12px; }
+        .nav-logo img { height: 45px; transition: var(--transition-smooth); filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
+        nav.sticky .nav-logo img { filter: none; }
+        .nav-logo span { 
+            font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: white; 
+            letter-spacing: 1px; transition: var(--transition-smooth);
+        }
+        nav.sticky .nav-logo span { color: var(--primary); }
+
+        .nav-desktop-links { display: flex; gap: 3rem; align-items: center; }
+        .nav-desktop-links a { 
+            color: white; font-weight: 500; font-size: 0.9rem; text-transform: uppercase; 
+            letter-spacing: 1px; transition: var(--transition-smooth);
+            position: relative;
+        }
+        nav.sticky .nav-desktop-links a { color: var(--primary); }
+        .nav-desktop-links a::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
+            background: var(--accent); transition: var(--transition-smooth);
+        }
+        .nav-desktop-links a:hover::after { width: 100%; }
+        .nav-desktop-links a:hover { color: var(--gold); }
+
+        /* Mobile Menu Controls */
+        .mobile-toggle { display: none; cursor: pointer; color: white; transition: var(--transition-smooth); }
+        nav.sticky .mobile-toggle { color: var(--primary); }
+        @media (max-width: 1024px) {
+            .nav-desktop-links { display: none; }
+            .mobile-toggle { display: block; }
+        }
+
+        .mobile-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--primary); z-index: 2500; display: flex;
+            flex-direction: column; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: var(--transition-smooth);
+        }
+        .mobile-overlay.active { opacity: 1; visibility: visible; }
+        .mobile-overlay a { 
+            color: white; font-size: 2.5rem; font-weight: 700; margin: 1.5rem 0; 
+            font-family: var(--font-serif);
+        }
+        .mobile-overlay .close-btn { position: absolute; top: 2rem; right: 2rem; color: white; }
+
+        /* Hero Section with Parallax Building */
+        .hero { 
+            height: 100vh; min-height: 700px; position: relative; overflow: hidden;
+            display: flex; align-items: center; color: white;
+        }
+        .hero-bg { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 120%; 
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('assets/hero_exterior.png') center/cover no-repeat;
+            z-index: -1; transform: translateY(0);
+        }
+        .hero h1 span {
+            background: var(--orange-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: var(--gold); /* Fallback */
+        }
+        .hero p { max-width: 600px; font-size: 1.2rem; color: rgba(255,255,255,0.9); margin-bottom: 3rem; }
+
+        /* Floating Responsive Booking Bar */
+        .booking-section { position: relative; z-index: 100; margin-top: -80px; }
+        .booking-card { 
+            background: white; border-radius: 12px; padding: clamp(1.5rem, 3vw, 3rem);
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05);
+            align-items: end;
+        }
+        @media (max-width: 900px) {
+            .booking-card { grid-template-columns: 1fr; margin-top: -50px; padding: 2rem; }
+            .booking-card .btn { width: 100%; height: 60px; }
+        }
+        .input-group label { display: block; margin-bottom: 1rem; color: var(--primary); }
+        .input-control { 
+            width: 100%; padding: 1.2rem; background: #f8f9fa; border: 1px solid #eee;
+            border-radius: 6px; font-size: 1rem; display: flex; align-items: center; gap: 15px;
+            color: var(--text-dark); font-weight: 500;
+        }
+        .input-control i { color: var(--gold); }
+
+        /* Content Sections & Features */
+        .section-title { margin-bottom: 5rem; text-align: center; }
+        .section-title h2 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--primary); }
+        .title-line { height: 4px; width: 80px; background: var(--orange-gradient); margin: 2rem auto; border-radius: 2px; }
+
+        /* Glassmorphic Cards (Bento Grid) */
+        .feature-grid { 
+            display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; 
+        }
+        .feature-card { 
+            position: relative; border-radius: 12px; overflow: hidden; grid-column: span 6;
+            height: clamp(300px, 40vw, 500px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05); transition: var(--transition-smooth);
+        }
+        .feature-card:nth-child(1), .feature-card:nth-child(4) { grid-column: span 7; }
+        .feature-card:nth-child(2), .feature-card:nth-child(3) { grid-column: span 5; }
+        @media (max-width: 768px) { .feature-card { grid-column: span 12 !important; height: 350px; } }
+
+        .feature-img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s ease; }
+        .feature-card:hover .feature-img { transform: scale(1.1); }
+        .feature-overlay { 
+            position: absolute; bottom: 0; left: 0; width: 100%; 
+            padding: 3rem; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white; transform: translateY(0); transition: var(--transition-smooth);
+        }
+        .feature-card:hover .feature-overlay { padding-bottom: 4rem; }
+
+        /* Animation Engine Styles */
+        [data-reveal] { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        [data-reveal].revealed { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* Footer & Branding */
+        footer { background: #f2f2f2; padding: clamp(5rem, 8vw, 8rem) 0 4rem; border-top: 1px solid #ddd; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 4rem; }
+        @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; } }
+        
+        .branding-card { 
+            background: white; padding: 3rem; border-radius: 12px; border: 1px solid #eee;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.03); 
+        }
+        .branding-card .dev-logo { height: 50px; margin-bottom: 2rem; }
+
+        .bottom-bar { 
+            margin-top: 5rem; padding-top: 3rem; border-top: 1px solid #ddd; 
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.85rem; color: var(--text-light);
+        }
+        @media (max-width: 768px) { .bottom-bar { flex-direction: column; gap: 2rem; text-align: center; } }
+
+        /* Demo Modal Styles */
+        #demo-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(8px);
+            z-index: 9999; display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: var(--transition-smooth);
+        }
+        #demo-modal.active { display: flex; opacity: 1; }
+        .modal-content {
+            background: var(--glass); padding: 4rem; border-radius: 16px;
+            max-width: 500px; width: 90%; text-align: center;
+            border: 2px solid var(--gold); box-shadow: 0 30px 100px rgba(0,0,0,0.5);
+            transform: scale(0.9); transition: var(--transition-smooth);
+        }
+        #demo-modal.active .modal-content { transform: scale(1); }
+        .modal-content h3 { color: var(--primary); font-size: 2rem; margin-bottom: 1.5rem; }
+        .modal-content p { color: var(--text-dark); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2.5rem; }
+        .modal-content .dev-signature { font-weight: 700; color: var(--gold); }
+
+    </style>
+</head>
+<body onload="init()">
+
+    <!-- Cinematic Scrollytelling Intro Section -->
+    <section id="scrolly-intro">
+        <div class="scrolly-viewport">
+            <canvas id="scrolly-canvas"></canvas>
+            
+            <div class="narrative-overlay">
+                <div class="narrative-beat" id="beat1">
+                    <p>The Legend Returns</p>
+                    <h2>Canary Inn Hazaribagh</h2>
+                </div>
+                <div class="narrative-beat" id="beat2">
+                    <p>Architecture</p>
+                    <h2>Modern Urban Luxury</h2>
+                </div>
+                <div class="narrative-beat" id="beat3">
+                    <p>Leisure</p>
+                    <h2>A Sanctuary of Serenity</h2>
+                </div>
+                <div class="narrative-beat" id="beat4">
+                    <p>Heritage</p>
+                    <h2>Your Legacy Awaits</h2>
+                </div>
+            </div>
+            
+            <!-- Transition Bridge -->
+            <div class="scrolly-bridge"></div>
+        </div>
+    </section>
+
+    <!-- Main Site Content (Hidden during intro) -->
+    <div class="site-content">
+        <!-- Header Navigation -->
+        <nav id="mainNav" class="intro-active">
+        <div class="container nav-inner">
+            <div class="nav-logo">
+                <img src="assets/canary_blue_logo.png" alt="Canary Inn Logo">
+                <span>CANARY INN</span>
+            </div>
+            <div class="nav-desktop-links">
+                <a href="#about">About</a>
+                <a href="#rooms">Rooms</a>
+                <a href="#amenities">Leisure</a>
+                <a href="#dining">Dining</a>
+                <button class="btn btn-primary" onclick="showDemoModal()" style="padding: 1rem 2rem; font-size: 0.75rem;">Book Now</button>
+            </div>
+            <div class="mobile-toggle" onclick="toggleMenu(true)">
+                <i data-lucide="menu" size="32"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileMenu">
+        <div class="close-btn" onclick="toggleMenu(false)">
+            <i data-lucide="x" size="40"></i>
+        </div>
+        <a href="#about" onclick="toggleMenu(false)">About</a>
+        <a href="#rooms" onclick="toggleMenu(false)">Rooms</a>
+        <a href="#amenities" onclick="toggleMenu(false)">Leisure</a>
+        <a href="#dining" onclick="toggleMenu(false)">Dining</a>
+        <button class="btn btn-primary" onclick="showDemoModal()" style="margin-top: 3rem;">Reservations</button>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="container" data-reveal>
+            <p class="uppercase-spaced text-accent">Hotel, Restaurant & Bar | Hazaribagh</p>
+            <h1>Your Urban Sanctuary <br> <span class="text-accent">Redefined.</span></h1>
+            <p>Blending modern sophistication with the warmth of boutique hospitality. Discover the landmark of leisure in the heart of the city.</p>
+            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="#rooms" class="btn btn-primary">Discover Suites</a>
+                <a href="#about" class="btn btn-outline" style="border-color: white; color: white;">Virtual Tour</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Booking Engine (Floating) -->
+    <section class="booking-section container">
+        <div class="booking-card" data-reveal class="delay-1">
+            <div class="input-group">
+                <label class="uppercase-spaced">Check-In</label>
+                <div class="input-control">
+                    <i data-lucide="calendar" size="20" class="text-accent"></i>
+                    <span>Select Date</span>
+                </div>
+            </div>
+            <div class="input-group">
+                <label class="uppercase-spaced">Check-Out</label>
+                <div class="input-control">
+                    <i data-lucide="calendar" size="20" class="text-accent"></i>
+                    <span>Select Date</span>
+                </div>
+            </div>
+            <div class="input-group">
+                <label class="uppercase-spaced">Guests</label>
+                <div class="input-control">
+                    <i data-lucide="users" size="20" class="text-accent"></i>
+                    <span>2 Adults, 1 Room</span>
+                </div>
+            </div>
+            <button class="btn btn-primary" onclick="showDemoModal()">Check Availability</button>
+        </div>
+    </section>
+
+    <!-- Suites Section -->
+    <section id="rooms" class="section-padding">
+        <div class="container">
+            <div class="section-title" data-reveal>
+                <p class="uppercase-spaced text-accent">Signature Refinement</p>
+                <h2>Exquisite Stays</h2>
+                <div class="title-line"></div>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card" data-reveal>
+                    <img src="assets/luxury_room.png" alt="Deluxe Room" class="feature-img">
+                    <div class="feature-overlay">
+                        <p class="uppercase-spaced text-accent">Starting from $299</p>
+                        <h3>Premium Deluxe Suite</h3>
+                    </div>
+                </div>
+                <div class="feature-card" data-reveal class="delay-2">
+                    <img src="assets/hero_exterior.png" alt="Executive Room" class="feature-img">
+                    <div class="feature-overlay">
+                        <p class="uppercase-spaced text-accent">Boutique Class</p>
+                        <h3>Executive Garden Room</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leisure Section -->
+    <section id="amenities" class="section-padding" style="background: #001a33; color: white;">
+        <div class="container">
+            <div class="section-title" data-reveal>
+                <p class="uppercase-spaced text-accent">Beyond Hospitality</p>
+                <h2 style="color: white;">Leisure & Wellbeing</h2>
+                <div class="title-line"></div>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card" data-reveal style="grid-column: span 5; height: 600px;">
+                    <img src="assets/spa_wellness.png" alt="Spa" class="feature-img">
+                    <div class="feature-overlay">
+                        <h3>Holistic Spa & Zen Center</h3>
+                    </div>
+                </div>
+                <div class="feature-card" data-reveal class="delay-1" style="grid-column: span 7; height: 600px;">
+                    <div style="padding: 5rem; display: flex; flex-direction: column; justify-content: center; height: 100%; background: var(--primary); border-left: 5px solid var(--gold);">
+                        <p class="uppercase-spaced text-gold" style="margin-bottom: 2rem;">The Canary Vibe</p>
+                        <h3 style="font-size: 3rem; margin-bottom: 2rem;">Vibrant Bar & <br> <span style="background: var(--orange-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Rooftop Lounge</span></h3>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 1.1rem; margin-bottom: 3rem;">Celebrate life at Hazaribagh's most iconic social destination. From signature cocktails to rhythmic soul, the Canary Pub is where legends meet.</p>
+                        <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                            <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="music" size="18" class="text-accent"></i> Live Jazz</li>
+                            <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="glass-water" size="18" class="text-accent"></i> Exotic Malts</li>
+                            <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="sun" size="18" class="text-accent"></i> Rooftop Views</li>
+                            <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="chef-hat" size="18" class="text-accent"></i> Fine Platters</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div data-reveal>
+                    <div class="nav-logo" style="margin-bottom: 2rem;">
+                        <img src="assets/canary_blue_logo.png" alt="Canary Inn Logo">
+                        <span style="color: var(--primary);">CANARY INN</span>
+                    </div>
+                    <p style="color: var(--text-light); line-height: 2;">A boutique landmark in Hazaribagh, Jharkhand. Combining modern urban architecture with timeless hospitality excellence.</p>
+                </div>
+                
+                <div data-reveal class="delay-1">
+                    <h4 class="uppercase-spaced" style="margin-bottom: 2rem;">Explore</h4>
+                    <ul style="display: flex; flex-direction: column; gap: 1.2rem; font-size: 0.9rem; color: var(--text-light);">
+                        <li><a href="#">The Hotel</a></li>
+                        <li><a href="#">Special Offers</a></li>
+                        <li><a href="#">Banquet Hall</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div data-reveal class="delay-2">
+                    <h4 class="uppercase-spaced" style="margin-bottom: 2rem;">Contact</h4>
+                    <ul style="display: flex; flex-direction: column; gap: 1.5rem; font-size: 0.9rem; color: var(--text-light);">
+                        <li style="display: flex; gap: 15px;"><i data-lucide="map-pin" size="18" class="text-accent"></i> Suresh Colony, Hazaribagh,<br>Jharkhand 825301</li>
+                        <li style="display: flex; gap: 15px;"><i data-lucide="phone" size="18" class="text-accent"></i> +91 093043 71432</li>
+                    </ul>
+                </div>
+
+                <div class="branding-card" data-reveal class="delay-3" style="border-top: 4px solid var(--gold);">
+                    <p class="uppercase-spaced" style="font-size: 0.65rem; color: #888; margin-bottom: 1rem;">Proudly Developed By</p>
+                    <img src="assets/teched_studios_logo.png" alt="Teched Studios" class="dev-logo">
+                    <p style="font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.5rem;">Teched Studios</p>
+                    <p style="font-size: 0.75rem; color: #aaa;">Digital Solutions Redefined</p>
+                </div>
+            </div>
+
+            <div class="bottom-bar">
+                <p>© 2024 Canary Inn. All Rights Reserved.</p>
+                <p>Website Crafted by <span style="font-weight: 700; color: var(--primary);">Teched Studios Blueprint™</span></p>
+                <div style="display: flex; gap: 2rem;">
+                    <i data-lucide="facebook" size="18" style="cursor: pointer;"></i>
+                    <i data-lucide="instagram" size="18" style="cursor: pointer;"></i>
+                    <i data-lucide="twitter" size="18" style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div> <!-- Close .site-content -->
+
+    <!-- Demo Modal Structure -->
+    <div id="demo-modal" onclick="closeDemoModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <i data-lucide="info" size="50" style="color: var(--gold); margin-bottom: 2rem;"></i>
+            <h3>Project Demo</h3>
+            <p>This is a premium landing page demo. The fully functional booking system and mobile application are currently being finalized by <span class="dev-signature">Teched Studios</span> for the official project handover.</p>
+            <button class="btn btn-primary" onclick="closeDemoModal()">Got it</button>
+        </div>
+    </div>
+
+    <!-- Native JavaScript Engine: Animations & Interactions -->
+    <script>
+        function init() {
+            // Initialize Lucide Icons
+            lucide.createIcons();
+
+            // Navbar Sticky & Theme Logic
+            const nav = document.getElementById('mainNav');
+            const heroBg = document.getElementById('heroBg');
+            
+            window.addEventListener('scroll', () => {
+                const scroll = window.scrollY;
+                
+                // Sticky Navbar
+                if (scroll > 100) {
+                    nav.classList.add('sticky');
+                } else {
+                    nav.classList.remove('sticky');
+                }
+
+                // Parallax Hero Effect
+                if (window.innerWidth > 1024) {
+                    heroBg.style.transform = `translateY(${scroll * 0.3}px)`;
+                }
+            });
+
+            // Intersection Observer for Reveal Animations
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, revealOptions);
+
+            document.querySelectorAll('[data-reveal]').forEach(el => {
+                revealObserver.observe(el);
+            });
+        }
+
+        // Mobile Menu Toggle
+        function toggleMenu(show) {
+            const menu = document.getElementById('mobileMenu');
+            if (show) {
+                menu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                menu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Demo Modal Functionality
+        function showDemoModal() {
+            const modal = document.getElementById('demo-modal');
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('active'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDemoModal() {
+            const modal = document.getElementById('demo-modal');
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 500);
+        }
+    </script>
+</body>
+</html>
